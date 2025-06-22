@@ -6,7 +6,7 @@ class SetIchiran extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final appBar = AppBar(
-      backgroundColor: Colors.blue,
+      backgroundColor: Colors.red,
       title: const Text('セット一覧'),
     );
     return Scaffold(

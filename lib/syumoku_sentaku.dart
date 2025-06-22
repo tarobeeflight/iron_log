@@ -1,41 +1,32 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 
-// 種目
-class Syumoku {
-  // 種目名
-  final String syumokuMei;
+import 'entity/shumoku.dart';
 
-  // 部位区分
-  final String buiKbn;
-
-  Syumoku(this.buiKbn, this.syumokuMei);
-}
-
-final List<Syumoku> chestModels = [
-  Syumoku('胸', 'ベンチプレス'),
-  Syumoku('胸', 'ダンベルプレス'),
+final List<Shumoku> chestModels = [
+  Shumoku('bui_mune', '胸', 'shumoku_benchi', 'ベンチプレス'),
+  Shumoku('bui_mune', '胸', 'shumoku_damberu', 'ダンベルプレス'),
 ];
 
-final List<Syumoku> backModels = [
-  Syumoku('背中', 'デッドリフト'),
-  Syumoku('背中', 'ラットプルダウン'),
+final List<Shumoku> backModels = [
+  Shumoku('bui_senaka', '背中', 'shumoku_lift', 'デッドリフト'),
+  Shumoku('bui_senaka', '背中', 'shumoku_rat', 'ラットプルダウン'),
 ];
 
-final List<Syumoku> legModels = [Syumoku('脚', 'スクワット')];
+final List<Shumoku> legModels = [Shumoku('bui_ashi', '脚', 'shumoku_scwad', 'スクワット')];
 
-final List<Syumoku> shoulderModels = [
-  Syumoku('肩', 'ショルダープレス'),
-  Syumoku('肩', 'サイドレイズ'),
+final List<Shumoku> shoulderModels = [
+  Shumoku('bui_kata', '肩', 'shumoku_sholder', 'ショルダープレス'),
+  Shumoku('bui_kata', '肩', 'shumoku_side', 'サイドレイズ'),
 ];
 
-final List<Syumoku> armModels = [
-  Syumoku('腕', 'バーベルカール'),
-  Syumoku('腕', 'フレンチプレス'),
+final List<Shumoku> armModels = [
+  Shumoku('bui_ude', '腕', 'shumoku_bervel', 'バーベルカール'),
+  Shumoku('bui_ude', '腕', 'shumoku_flench', 'フレンチプレス'),
 ];
 
 // モデル　→　ウィジェットに変換する
-Widget modelToWidget(Syumoku model) {
+Widget modelToWidget(Shumoku model) {
   // modelを使って好きなWidgetを作る
 
   final metaText = Container(
@@ -43,7 +34,7 @@ Widget modelToWidget(Syumoku model) {
     height: 80,
     padding: EdgeInsets.all(10),
     child: Text(
-      '${model.syumokuMei}',
+      '${model.shumokuMei}',
       style: const TextStyle(color: Colors.black),
     ),
   );
@@ -95,7 +86,7 @@ class SyumokuSentaku extends StatelessWidget {
                   ),
                   height: 80,
                   child: Text(
-                    chestModels[index].syumokuMei,
+                    chestModels[index].shumokuMei,
                     style: TextStyle(fontSize: 16),
                   ),
                 );
