@@ -66,7 +66,7 @@ class ShumokuSentaku extends StatelessWidget {
     final chestCon = Center(child: SizedBox(child: chestList));
 
     final sca = Scaffold(
-      backgroundColor: Colors.grey,
+      backgroundColor: Colors.white,
       appBar: AppBar(
         backgroundColor: Colors.blue,
         leading: IconButton(onPressed: () {}, icon: Icon(Icons.arrow_back)),
@@ -79,91 +79,57 @@ class ShumokuSentaku extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
 
             children: <Widget>[
-              Container(
-                width: 200,
-                height: 80,
-                margin: EdgeInsets.all(2),
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  border: Border.all(color: Colors.blue, width: 2),
-                ),
-                child: Text("胸"),
+              ExpansionTile(
+                title: const Text('胸'),
+                subtitle: const Text('Chest'),
+                children: <Widget>[
+                  ListView.builder(
+                    shrinkWrap: true,
+                    physics: const NeverScrollableScrollPhysics(),
+                    itemCount: chestModels.length,
+                    itemBuilder: (context, index) {
+                      return Container(
+                        //margin: EdgeInsets.all(1),
+                        decoration: BoxDecoration(color: Colors.white),
+                        height: 60,
+                        alignment: Alignment.centerLeft,
+                        child: Text(
+                          chestModels[index].shumokuMei,
+                          style: TextStyle(
+                            fontSize: 16,
+                            decoration: TextDecoration.underline,
+                          ),
+                        ),
+                      );
+                    },
+                  ),
+                ],
               ),
-              SizedBox(
-                height: 240,
-                child: ListView.builder(
-                  itemCount: chestModels.length,
-                  itemBuilder: (context, index) {
-                    return Container(
-                      margin: EdgeInsets.all(2),
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        border: Border.all(color: Colors.blue, width: 2),
-                      ),
-                      height: 80,
-                      child: Text(
-                        chestModels[index].shumokuMei,
-                        style: TextStyle(fontSize: 16),
-                      ),
-                    );
-                  },
-                ),
-              ),
-              Container(
-                width: 200,
-                height: 80,
-                margin: EdgeInsets.all(2),
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  border: Border.all(color: Colors.blue, width: 2),
-                ),
-                child: Text("すべて表示"),
-              ),
-            ],
-          ),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-
-            children: <Widget>[
-              Container(
-                width: 200,
-                height: 80,
-                margin: EdgeInsets.all(2),
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  border: Border.all(color: Colors.blue, width: 2),
-                ),
-                child: Text("背中"),
-              ),
-              SizedBox(
-                height: 240,
-                child: ListView.builder(
-                  itemCount: backModels.length,
-                  itemBuilder: (context, index) {
-                    return Container(
-                      margin: EdgeInsets.all(2),
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        border: Border.all(color: Colors.blue, width: 2),
-                      ),
-                      height: 80,
-                      child: Text(
-                        backModels[index].shumokuMei,
-                        style: TextStyle(fontSize: 16),
-                      ),
-                    );
-                  },
-                ),
-              ),
-              Container(
-                width: 200,
-                height: 80,
-                margin: EdgeInsets.all(2),
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  border: Border.all(color: Colors.blue, width: 2),
-                ),
-                child: Text("すべて表示"),
+              ExpansionTile(
+                title: const Text('背中'),
+                subtitle: const Text('Back'),
+                children: <Widget>[
+                  ListView.builder(
+                    shrinkWrap: true,
+                    physics: const NeverScrollableScrollPhysics(),
+                    itemCount: backModels.length,
+                    itemBuilder: (context, index) {
+                      return Container(
+                        //margin: EdgeInsets.all(1),
+                        decoration: BoxDecoration(color: Colors.white),
+                        height: 60,
+                        alignment: Alignment.centerLeft,
+                        child: Text(
+                          backModels[index].shumokuMei,
+                          style: TextStyle(
+                            fontSize: 16,
+                            decoration: TextDecoration.underline,
+                          ),
+                        ),
+                      );
+                    },
+                  ),
+                ],
               ),
             ],
           ),
