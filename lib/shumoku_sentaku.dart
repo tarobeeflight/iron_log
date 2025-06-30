@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:iron_log/shumoku_ichiran.dart';
 
 import 'entity/shumoku.dart';
 
@@ -93,11 +94,22 @@ class ShumokuSentaku extends StatelessWidget {
                         decoration: BoxDecoration(color: Colors.white),
                         height: 60,
                         alignment: Alignment.centerLeft,
-                        child: Text(
-                          chestModels[index].shumokuMei,
-                          style: TextStyle(
-                            fontSize: 16,
-                            decoration: TextDecoration.underline,
+                        child: TextButton(
+                          onPressed: () {
+                            // ボタンが押された時の処理: 画面遷移
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => const ShumokuIchiran(),
+                              ),
+                            );
+                          },
+                          child: Text(
+                            chestModels[index].shumokuMei,
+                            style: TextStyle(
+                              fontSize: 16,
+                              decoration: TextDecoration.underline,
+                            ),
                           ),
                         ),
                       );
@@ -119,11 +131,22 @@ class ShumokuSentaku extends StatelessWidget {
                         decoration: BoxDecoration(color: Colors.white),
                         height: 60,
                         alignment: Alignment.centerLeft,
-                        child: Text(
-                          backModels[index].shumokuMei,
-                          style: TextStyle(
-                            fontSize: 16,
-                            decoration: TextDecoration.underline,
+                        child: TextButton(
+                          onPressed: () {
+                            // ボタンが押された時の処理: 画面遷移
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => const ShumokuIchiran(),
+                              ),
+                            );
+                          },
+                          child: Text(
+                            backModels[index].shumokuMei,
+                            style: TextStyle(
+                              fontSize: 16,
+                              decoration: TextDecoration.underline,
+                            ),
                           ),
                         ),
                       );
