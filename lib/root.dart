@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:iron_log/home.dart';
@@ -8,9 +7,10 @@ import 'package:iron_log/settei.dart';
 import 'package:iron_log/shumoku_ichiran.dart';
 import 'package:iron_log/shumoku_tsuika.dart';
 import 'package:iron_log/shumoku_sentaku.dart';
+import 'package:iron_log/stub_dialog_manager.dart';
 
 final pageIndexProvider = StateProvider((ref) {
-  return 1;
+  return 7;
 });
 
 class Root extends ConsumerWidget {
@@ -29,6 +29,7 @@ class Root extends ConsumerWidget {
       BottomNavigationBarItem(icon: Icon(Icons.person), label: '種目追加'),
       BottomNavigationBarItem(icon: Icon(Icons.person), label: '種目選択'),
       BottomNavigationBarItem(icon: Icon(Icons.person), label: '設定'),
+      BottomNavigationBarItem(icon: Icon(Icons.person), label: 'ダイアログ'),
     ];
 
     final bar = BottomNavigationBar(
@@ -51,6 +52,7 @@ class Root extends ConsumerWidget {
       ShumokuTsuika(),
       ShumokuSentaku(),
       Settei(),
+      StubDialogManager(),
     ];
     return Scaffold(body: pages[index], bottomNavigationBar: bar);
   }
