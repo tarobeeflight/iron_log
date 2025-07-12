@@ -33,44 +33,48 @@ class _ShumokuTsuikaState extends State<ShumokuTsuika> {
         children: [
           Row(
             children: [
-              Text('部位'),
+              Expanded(flex: 1, child: Center(child: Text('部位'))),
               const SizedBox(height: 30),
-              DropdownButton<String>(
-                value: _selectedItem,
-                icon: const Icon(Icons.arrow_downward),
-                // ドロップダウンのアイコン
-                iconSize: 24,
-                elevation: 16,
-                style: const TextStyle(color: Colors.deepPurple, fontSize: 16),
-                underline: Container(
+              Expanded(
+                flex: 5,
+                child: DropdownButton<String>(
+                  hint: Text("部位を選択してください"),
+                  value: _selectedItem,
+
+                  // ドロップダウンのアイコン
+                  icon: const Icon(Icons.arrow_downward),
+                  iconSize: 24,
+                  style: const TextStyle(color: Colors.black, fontSize: 16),
+
                   // ドロップダウンの下線
-                  height: 2,
-                  color: Colors.deepPurpleAccent,
+                  underline: Container(height: 2, color: Colors.black),
+                  onChanged: (String? newValue) {
+                    setState(() {
+                      _selectedItem = newValue; // 選択された値を更新
+                    });
+                  },
+                  items: shumokuList.map<DropdownMenuItem<String>>((
+                    String value,
+                  ) {
+                    // ドロップダウンの各項目
+                    return DropdownMenuItem<String>(
+                      value: value,
+                      child: SizedBox(width: 120, child: Text(value)),
+                    );
+                  }).toList(),
                 ),
-                onChanged: (String? newValue) {
-                  setState(() {
-                    _selectedItem = newValue; // 選択された値を更新
-                  });
-                },
-                items: shumokuList.map<DropdownMenuItem<String>>((
-                  String value,
-                ) {
-                  // 4. ドロップダウンの各項目
-                  return DropdownMenuItem<String>(
-                    value: value,
-                    child: SizedBox(width: 120, child: Text(value)),
-                  );
-                }).toList(),
               ),
             ],
           ),
           Row(
             children: [
-              Text('種目'),
+              Expanded(flex: 1, child: Center(child: Text('種目'))),
+
               Expanded(
+                flex: 5,
                 child: TextField(
                   decoration: const InputDecoration(
-                    labelText: '種目を入力してください',
+                    labelText: '種目名を入力してください',
                     border: OutlineInputBorder(),
                   ),
                 ),
