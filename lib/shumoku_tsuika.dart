@@ -21,9 +21,10 @@ class _ShumokuTsuikaState extends State<ShumokuTsuika> {
   @override
   Widget build(BuildContext context) {
     final appBar = AppBar(
-      backgroundColor: Colors.blue,
+      backgroundColor: Colors.red,
       leading: IconButton(onPressed: () {}, icon: Icon(Icons.arrow_back)),
-      title: const Text('種目追加'),
+      title: Center(child: Text('種目追加')),
+      titleTextStyle: TextStyle(color: Colors.white),
       actions: [ElevatedButton(onPressed: () {}, child: Text('登録'))],
     );
 
