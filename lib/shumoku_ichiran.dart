@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:iron_log/set_ichiran.dart';
 
 class ShumokuIchiran extends StatelessWidget {
   const ShumokuIchiran({super.key});
@@ -6,8 +7,14 @@ class ShumokuIchiran extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final appBar = AppBar(
-      backgroundColor: Colors.blue,
-      title: const Text('種目一覧'),
+      backgroundColor: Colors.red,
+      title: Center(child: Text("種目一覧")),
+      titleTextStyle: TextStyle(color: Colors.white),
+      // foregroundColor: Colors.white,
+      leading: TextButton(
+        onPressed: () => {},
+        child: Text('戻る', style: TextStyle(color: Colors.white)),
+      ),
     );
 
     final shumokumei = Container(
@@ -50,29 +57,105 @@ class ShumokuIchiran extends StatelessWidget {
       ),
     );
 
-    final setBetsuKiroku = Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 8.0),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.end,
-        children: [
-          Expanded(flex: 1, child: Text('1')),
-          Expanded(
-            flex: 2,
-            child: Text('40.0', style: TextStyle(fontWeight: FontWeight.bold)),
+    final setBetsuKiroku = Column(
+      children: [
+        Container(
+          height: 60,
+          decoration: BoxDecoration(
+            border: Border(bottom: BorderSide(color: Colors.grey)),
           ),
-          Expanded(flex: 1, child: Text('kg')),
-          Expanded(
-            flex: 1,
-            child: Text('10', style: TextStyle(fontWeight: FontWeight.bold)),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              Expanded(flex: 1, child: Text('1', textAlign: TextAlign.center)),
+              Expanded(
+                flex: 2,
+                child: Text(
+                  '40.0',
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+                  textAlign: TextAlign.right,
+                ),
+              ),
+              Expanded(flex: 1, child: Text('kg')),
+              Expanded(
+                flex: 1,
+                child: Text(
+                  '10',
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+                  textAlign: TextAlign.right,
+                ),
+              ),
+              Expanded(flex: 1, child: Text('回')),
+            ],
           ),
-          Expanded(flex: 1, child: Text('回')),
-        ],
-      ),
+        ),
+        Container(
+          height: 60,
+          decoration: BoxDecoration(
+            border: Border(bottom: BorderSide(color: Colors.grey)),
+          ),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              Expanded(flex: 1, child: Text('2', textAlign: TextAlign.center)),
+              Expanded(
+                flex: 2,
+                child: Text(
+                  '50',
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+                  textAlign: TextAlign.right,
+                ),
+              ),
+              Expanded(flex: 1, child: Text('kg')),
+              Expanded(
+                flex: 1,
+                child: Text(
+                  '5',
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+                  textAlign: TextAlign.right,
+                ),
+              ),
+              Expanded(flex: 1, child: Text('回')),
+            ],
+          ),
+        ),
+        Container(
+          height: 60,
+          decoration: BoxDecoration(
+            border: Border(bottom: BorderSide(color: Colors.grey)),
+          ),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              IconButton(
+                onPressed: () {
+                  // ボタンが押された時の処理: 画面遷移
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => SetIchiran()),
+                  );
+                },
+                icon: Icon(Icons.add_circle),
+                color: Colors.grey,
+              ),
+            ],
+          ),
+        ),
+      ],
     );
 
     return Scaffold(
       appBar: appBar,
-      body: Column(children: [shumokumei, shumokuKyotsuLabel, setBetsuKiroku]),
+      body: Column(
+        children: [
+          shumokumei,
+          shumokuKyotsuLabel,
+          setBetsuKiroku,
+          shumokumei,
+          shumokuKyotsuLabel,
+          setBetsuKiroku,
+        ],
+      ),
     );
   }
 }

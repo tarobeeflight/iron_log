@@ -69,9 +69,10 @@ class ShumokuSentaku extends StatelessWidget {
     final sca = Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        backgroundColor: Colors.blue,
+        backgroundColor: Colors.red,
         leading: IconButton(onPressed: () {}, icon: Icon(Icons.arrow_back)),
-        title: const Text('種目選択'),
+        title: Center(child: Text('種目選択')),
+        titleTextStyle: TextStyle(color: Colors.white),
         actions: [ElevatedButton(onPressed: () {}, child: Text('編集'))],
       ),
       body: ListView(
@@ -83,6 +84,8 @@ class ShumokuSentaku extends StatelessWidget {
               ExpansionTile(
                 title: const Text('胸'),
                 subtitle: const Text('Chest'),
+                collapsedBackgroundColor: Colors.red,
+                collapsedTextColor: Colors.white,
                 children: <Widget>[
                   ListView.builder(
                     shrinkWrap: true,
@@ -120,6 +123,8 @@ class ShumokuSentaku extends StatelessWidget {
               ExpansionTile(
                 title: const Text('背中'),
                 subtitle: const Text('Back'),
+                collapsedBackgroundColor: Colors.red,
+                collapsedTextColor: Colors.white,
                 children: <Widget>[
                   ListView.builder(
                     shrinkWrap: true,
